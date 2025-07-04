@@ -1,28 +1,49 @@
-function handleSubmit(event) 
-{
-    event.preventDefault();
-    const email = event.target.querySelector('.email-input').value;
-    
+const handleSubmit = event => {
+  event.preventDefault();
+
+  const myForm = event.target;
+  const formData = new FormData(myForm);
+
     const button = event.target.querySelector('.cta-button');
     const originalText = button.textContent;
-    
+
     button.textContent = 'Enviando...';
     button.disabled = true;
-    
-    setTimeout(() => 
+
+    fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString()
+      })
+    .then(() => 
     {
-        button.textContent = '✓ Cadastrado!';
+        button.textContent = '✓ Cadastrado';
         button.style.background = '#10b981';
-        
+
         setTimeout(() => 
         {
             button.textContent = originalText;
             button.disabled = false;
             button.style.background = '';
             event.target.reset();
-        }, 1000);
-    }, 1000);
-}
+        }, 2000);
+    })
+    .catch((error) => 
+    {
+        console.error('Erro ao enviar:', error);
+        button.textContent = 'Erro';
+        button.style.background = '#ef4444';
+
+        setTimeout(() => 
+        {
+            button.textContent = originalText;
+            button.disabled = false;
+            button.style.background = '';
+        }, 1500);
+    });
+};
+
+document.querySelector("form").addEventListener("submit", handleSubmit);
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => 
 {
