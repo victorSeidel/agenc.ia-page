@@ -1,20 +1,41 @@
-const handleSubmit = event => {
-  event.preventDefault();
+function handleSubmit(event) 
+{
+    event.preventDefault();
+    const email = event.target.querySelector('.email-input').value;
+    
+    const button = event.target.querySelector('.cta-button');
+    const originalText = button.textContent;
+    
+    button.textContent = 'Enviando...';
+    button.disabled = true;
+    
+    setTimeout(() => 
+    {
+        button.textContent = '✓ Cadastrado';
+        button.style.background = '#10b981';
+        
+        setTimeout(() => 
+        {
+            button.textContent = originalText;
+            button.disabled = false;
+            button.style.background = '';
+            event.target.reset();
+        }, 2000);
+    }, 1000);
+}
 
-  const myForm = event.target;
-  const formData = new FormData(myForm);
+function handleSubmitREAL(event) 
+{
+    event.preventDefault();
 
+    const email = event.target.querySelector('.email-input').value;
     const button = event.target.querySelector('.cta-button');
     const originalText = button.textContent;
 
     button.textContent = 'Enviando...';
     button.disabled = true;
 
-    fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString()
-      })
+    emailjs.send('SEU_SERVICE_ID', 'SEU_TEMPLATE_ID', { email: email })
     .then(() => 
     {
         button.textContent = '✓ Cadastrado';
@@ -26,7 +47,7 @@ const handleSubmit = event => {
             button.disabled = false;
             button.style.background = '';
             event.target.reset();
-        }, 2000);
+        }, 1000);
     })
     .catch((error) => 
     {
@@ -41,9 +62,7 @@ const handleSubmit = event => {
             button.style.background = '';
         }, 1500);
     });
-};
-
-document.querySelector("form").addEventListener("submit", handleSubmit);
+}
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => 
 {
