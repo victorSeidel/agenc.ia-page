@@ -335,10 +335,6 @@ footer {
         flex-direction: column;
     }
 
-    .nav-links {
-        display: none;
-    }
-
     .capture-box {
         margin: 0 1rem;
         padding: 2rem;
