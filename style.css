@@ -262,9 +262,10 @@ footer {
 }
 
 .footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 4rem;
     margin-bottom: 2rem;
 }
 
