@@ -1,32 +1,6 @@
 function handleSubmit(event) 
 {
     event.preventDefault();
-    const email = event.target.querySelector('.email-input').value;
-    
-    const button = event.target.querySelector('.cta-button');
-    const originalText = button.textContent;
-    
-    button.textContent = 'Enviando...';
-    button.disabled = true;
-    
-    setTimeout(() => 
-    {
-        button.textContent = '✓ Cadastrado';
-        button.style.background = '#10b981';
-        
-        setTimeout(() => 
-        {
-            button.textContent = originalText;
-            button.disabled = false;
-            button.style.background = '';
-            event.target.reset();
-        }, 2000);
-    }, 1000);
-}
-
-function handleSubmitREAL(event) 
-{
-    event.preventDefault();
 
     const email = event.target.querySelector('.email-input').value;
     const button = event.target.querySelector('.cta-button');
@@ -35,7 +9,7 @@ function handleSubmitREAL(event)
     button.textContent = 'Enviando...';
     button.disabled = true;
 
-    emailjs.send('SEU_SERVICE_ID', 'SEU_TEMPLATE_ID', { email: email })
+    emailjs.send("service_5w9ufpp", "template_fr57qj7", { email: email })
     .then(() => 
     {
         button.textContent = '✓ Cadastrado';
