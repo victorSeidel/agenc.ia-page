@@ -47,7 +47,7 @@ nav {
 .nav-links a {
     text-decoration: none;
     color: #4a5568;
-    font-weight: 500;
+    font-weight: bold;
     transition: color 0.3s ease;
 }
 
