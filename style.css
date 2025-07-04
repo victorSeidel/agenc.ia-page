@@ -232,7 +232,7 @@ nav {
 .mockup-section h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: #13052b;
+    color: #2d3748;
 }
 
 .mockup-container {
@@ -256,7 +256,7 @@ nav {
 }
 
 footer {
-    background: #2d3748;
+    background: 13052b;
     color: white;
     padding: 3rem 0 2rem;
 }
