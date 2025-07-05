@@ -211,6 +211,7 @@ nav {
     justify-content: center;
     margin: 0 auto 1.5rem;
     font-size: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .feature-icon:hover {
